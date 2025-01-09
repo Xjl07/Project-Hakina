@@ -4,7 +4,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Hakeena - Logout</title>
+    <title>Settings Page</title>
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600&display=swap" rel="stylesheet">
     <style>
     /* General */
@@ -26,7 +26,6 @@
         top: 0;
         left: 0;
         width: 100%;
-        padding: 15px 20px;
     }
 
     header img {
@@ -34,7 +33,6 @@
         height: auto;
         margin-right: 15px;
         transform: translateX(50px);
-        /* دفع الصورة لليمين */
     }
 
     header .logo {
@@ -68,7 +66,6 @@
         /* عدلي القيمة حسب الحاجة */
     }
 
-    /* Sidebar */
     .sidebar {
         width: 200px;
         background-color: #faf5ef;
@@ -119,66 +116,76 @@
     }
 
     /* Main content */
-    .main-content {
-        flex: 1;
-        padding: 20px;
+    .content {
         margin-left: 220px;
-        text-align: center;
-        margin-top: 70px;
-        display: flex;
-        flex-direction: column;
-        align-items: center;
-        justify-content: center;
-        height: calc(100vh - 70px);
+        padding: 120px 40px 40px;
     }
 
-    .main-content h2 {
-        font-size: 1.5rem;
-        color: #8b4513;
-        margin-bottom: 20px;
-        text-align: left;
-    }
-
-    .main-content .message-container {
+    .header {
         display: flex;
         align-items: center;
-        justify-content: flex-start;
-        gap: 15px;
-        margin-bottom: 30px;
+        background-color: #FDF6EB;
+        padding: 5px 5px;
+        border-radius: 20px;
+        border: 1px solid #D9CBB8;
+        margin-bottom: 40px;
+        width: 230px;
+        position: relative;
+        left: 100px;
     }
 
-    .main-content .message-container img {
-        width: 50px;
-        height: 50px;
-        object-fit: cover;
+    .header img {
+        width: 70px;
+        height: 70px;
+        position: absolute;
+        left: -80px;
+        top: 50%;
+        transform: translateY(-50%);
     }
 
-    .main-content .action-buttons {
-        display: flex;
-        flex-direction: row;
-        justify-content: center;
-        gap: 30px;
+    .header h1 {
+        color: #6A4F3D;
+        font-size: 20px;
+        margin-left: 40px;
     }
 
-    .yes-button,
-    .no-button {
-        display: inline-block;
-        background-color: #008b8b;
-        color: #fff;
-        border: none;
-        border-radius: 5px;
-        padding: 10px 20px;
-        font-size: 1rem;
+    .settings-grid {
+        display: grid;
+        grid-template-columns: repeat(2, 1fr);
+        column-gap: 0xp;
+        gap: 20px;
+        /* المسافة بين المستطيلات */
+        justify-items: center;
+        /* محاذاة العناصر أفقياً في المنتصف */
+        align-items: center;
+        /* محاذاة العناصر رأسياً في المنتصف */
+    }
+
+    .settings-item {
         text-decoration: none;
-        text-align: center;
+        display: grid;
+        align-items: center;
+        justify-content: center;
+        background-color: #FDF6EB;
+        padding: 3px;
+        border-radius: 20px;
+        border: 1px solid #D9CBB8;
+        color: #6A4F3D;
+        font-size: 16px;
         cursor: pointer;
-        width: 120px;
-        /* توحيد العرض */
+        position: relative;
+        width: 150px;
+        margin: 3px auto;
     }
 
-    .yes-button:hover,
-    .no-button:hover {
-        background-color: #006f6f;
+    .settings-item img {
+        width: 40px;
+        /* تعديل العرض */
+        height: 45px;
+        /* تعديل الارتفاع */
+        position: absolute;
+        left: -50px;
+        /* تحديد مكان الصورة بالنسبة للمستطيل */
     }
     </style>
 </head>
@@ -216,18 +223,52 @@
             </div>
         </aside>
         <main class="main-content">
-            <div class="message-container">
-                <img src="signout.png" alt="Logout Icon">
-                <h2>Are you sure you want to sign out?</h2>
-            </div>
-            <div class="action-buttons">
-                <!-- زر Yes -->
-                <a href="index.php" class="yes-button">Yes</a>
+            <!-- محتوى الصفحة -->
+            <div class="content">
+                <div class="header">
+                    <img src="stt.jpg" alt="Settings Icon">
+                    <h1>Settings & Activity</h1>
+                </div>
+                <div class="settings-grid">
+                    <!-- Account & Privacy -->
+                    <a href="language_region.php" class="settings-item">
+                        <img src="prv.jpg" alt="Account Icon">
+                        <span>Account & Privacy</span>
+                    </a>
 
-                <!-- زر No -->
-                <button class="no-button" onclick="window.history.back();">No</button>
+                    <!-- Comment -->
+                    <a href="comments.php" class="settings-item">
+                        <img src="comment.jpg" alt="Comment Icon">
+                        <span>Comment</span>
+                    </a>
+
+                    <!-- Language & Region -->
+                    <a href="language&region.php" class="settings-item">
+                        <img src="lang.jpg" alt="Language Icon">
+                        <span>Language&Region</span>
+                    </a>
+
+                    <!-- Hiding Words -->
+                    <a href="hiding_words.php" class="settings-item">
+                        <img src="hiding.jpg" alt="Hiding Words Icon">
+                        <span>Hiding Words</span>
+                    </a>
+
+                    <!-- Data & Time -->
+                    <a href="date_time.php" class="settings-item">
+                        <img src="time.jpg" alt="Time Icon">
+                        <span>Data & Time</span>
+                    </a>
+
+                    <!-- Notifications -->
+                    <a href="notifications.php" class="settings-item">
+                        <img src="notifi.jpg" alt="Notification Icon">
+                        <span>Notifications</span>
+                    </a>
+                </div>
             </div>
-        </main>
+
+    </div>
     </div>
 </body>
 

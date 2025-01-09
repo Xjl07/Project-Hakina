@@ -1,12 +1,32 @@
+<?php
+// الاتصال بقاعدة البيانات
+$servername = "localhost";
+$username = "root";
+$password = "";
+$dbname = "hakinadb";
+
+$conn = new mysqli($servername, $username, $password, $dbname);
+
+// التحقق من الاتصال
+if ($conn->connect_error) {
+    die("Connection failed: " . $conn->connect_error);
+}
+
+// استعلام لجلب الإشعارات
+$sql = "SELECT * FROM notifications";
+$result = $conn->query($sql);
+?>
+
 <!DOCTYPE html>
 <html lang="en" dir="ltr">
 
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Hakeena - Logout</title>
+    <title>Hakeena - Notifications</title>
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600&display=swap" rel="stylesheet">
     <style>
+    /* نسخ نفس التنسيقات الموجودة */
     /* General */
     body {
         margin: 0;
@@ -26,7 +46,6 @@
         top: 0;
         left: 0;
         width: 100%;
-        padding: 15px 20px;
     }
 
     header img {
@@ -34,7 +53,6 @@
         height: auto;
         margin-right: 15px;
         transform: translateX(50px);
-        /* دفع الصورة لليمين */
     }
 
     header .logo {
@@ -65,10 +83,8 @@
         width: 150px;
         outline: none;
         transform: translateX(-35px);
-        /* عدلي القيمة حسب الحاجة */
     }
 
-    /* Sidebar */
     .sidebar {
         width: 200px;
         background-color: #faf5ef;
@@ -118,72 +134,57 @@
         color: #007BFF;
     }
 
-    /* Main content */
     .main-content {
         flex: 1;
         padding: 20px;
         margin-left: 220px;
-        text-align: center;
         margin-top: 70px;
-        display: flex;
-        flex-direction: column;
-        align-items: center;
-        justify-content: center;
-        height: calc(100vh - 70px);
     }
 
     .main-content h2 {
         font-size: 1.5rem;
         color: #8b4513;
         margin-bottom: 20px;
-        text-align: left;
     }
 
-    .main-content .message-container {
+    .notification {
         display: flex;
         align-items: center;
         justify-content: flex-start;
         gap: 15px;
-        margin-bottom: 30px;
+        padding: 15px;
+        background-color: #fff;
+        border: 1px solid #ccc;
+        border-radius: 10px;
+        margin-bottom: 10px;
     }
 
-    .main-content .message-container img {
+    .notification img {
         width: 50px;
         height: 50px;
         object-fit: cover;
+        border-radius: 50%;
     }
 
-    .main-content .action-buttons {
-        display: flex;
-        flex-direction: row;
-        justify-content: center;
-        gap: 30px;
+    .notification-content {
+        text-align: left;
     }
 
-    .yes-button,
-    .no-button {
-        display: inline-block;
-        background-color: #008b8b;
-        color: #fff;
-        border: none;
-        border-radius: 5px;
-        padding: 10px 20px;
-        font-size: 1rem;
-        text-decoration: none;
-        text-align: center;
-        cursor: pointer;
-        width: 120px;
-        /* توحيد العرض */
+    .notification-content p {
+        margin: 0;
+        font-size: 0.9rem;
+        color: #333;
     }
 
-    .yes-button:hover,
-    .no-button:hover {
-        background-color: #006f6f;
+    .notification-content span {
+        font-size: 0.8rem;
+        color: #888;
     }
     </style>
 </head>
 
 <body>
+
     <header>
         <img src="logo.png" alt="Hakeena Image">
         <nav>
@@ -193,6 +194,7 @@
         </nav>
         <input class="search-box" type="text" placeholder="Search...">
     </header>
+
     <div class="container">
         <aside class="sidebar">
             <div class="top-menu">
@@ -215,20 +217,48 @@
                 </ul>
             </div>
         </aside>
-        <main class="main-content">
-            <div class="message-container">
-                <img src="signout.png" alt="Logout Icon">
-                <h2>Are you sure you want to sign out?</h2>
-            </div>
-            <div class="action-buttons">
-                <!-- زر Yes -->
-                <a href="index.php" class="yes-button">Yes</a>
 
-                <!-- زر No -->
-                <button class="no-button" onclick="window.history.back();">No</button>
+        <main class="main-content">
+            <h2>Notifications</h2>
+            <?php if ($result->num_rows > 0): ?>
+            <?php while ($row = $result->fetch_assoc()): ?>
+            <div class="notification">
+                <?php
+                // تحديد الصورة بناءً على userID
+                $userID = $row['userID'];
+                $avatarPath = '';
+
+                // منطق لاختيار الصورة بناءً على userID
+                if ($userID == 1) {
+                    $avatarPath = 'avatar1.jpg';
+                } elseif ($userID == 2) {
+                    $avatarPath = 'avatar2.jpg';
+                } elseif ($userID == 3) {
+                    $avatarPath = 'avatar3.jpg';
+                } elseif ($userID == 4) {
+                    $avatarPath = 'avatar4.jpg';
+                } else {
+                    // إذا كان الـ userID غير معرف يمكن وضع صورة افتراضية
+                    $avatarPath = 'hakina/avatar1.jpg';
+                }
+                ?>
+                <img src="avatar3.jpg" alt="User Icon">
+                <div class="notification-content">
+                    <p><strong>User <?php echo $row['userID']; ?></strong> <?php echo $row['massage']; ?></p>
+                    <span><?php echo ($row['isRead'] ? 'Read' : 'Unread'); ?></span>
+                </div>
             </div>
+            <?php endwhile; ?>
+            <?php else: ?>
+            <p>No notifications available.</p>
+            <?php endif; ?>
         </main>
     </div>
+
 </body>
 
 </html>
+
+<?php
+$conn->close();
+?>

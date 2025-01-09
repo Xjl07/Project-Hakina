@@ -4,7 +4,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Hakeena - Logout</title>
+    <title>Hakeena - Language & Region</title>
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600&display=swap" rel="stylesheet">
     <style>
     /* General */
@@ -26,15 +26,12 @@
         top: 0;
         left: 0;
         width: 100%;
-        padding: 15px 20px;
     }
 
     header img {
         width: 90px;
         height: auto;
-        margin-right: 15px;
         transform: translateX(50px);
-        /* دفع الصورة لليمين */
     }
 
     header .logo {
@@ -68,7 +65,6 @@
         /* عدلي القيمة حسب الحاجة */
     }
 
-    /* Sidebar */
     .sidebar {
         width: 200px;
         background-color: #faf5ef;
@@ -123,61 +119,46 @@
         flex: 1;
         padding: 20px;
         margin-left: 220px;
-        text-align: center;
         margin-top: 70px;
-        display: flex;
-        flex-direction: column;
-        align-items: center;
-        justify-content: center;
-        height: calc(100vh - 70px);
     }
 
     .main-content h2 {
         font-size: 1.5rem;
         color: #8b4513;
         margin-bottom: 20px;
-        text-align: left;
     }
 
-    .main-content .message-container {
-        display: flex;
-        align-items: center;
-        justify-content: flex-start;
-        gap: 15px;
+    .settings-section {
         margin-bottom: 30px;
     }
 
-    .main-content .message-container img {
-        width: 50px;
-        height: 50px;
-        object-fit: cover;
+    .settings-section label {
+        font-size: 1rem;
+        color: #333;
+        display: block;
+        margin-bottom: 10px;
     }
 
-    .main-content .action-buttons {
-        display: flex;
-        flex-direction: row;
-        justify-content: center;
-        gap: 30px;
+    .settings-section select {
+        width: 100%;
+        padding: 10px;
+        border: 1px solid #ccc;
+        border-radius: 5px;
     }
 
-    .yes-button,
-    .no-button {
-        display: inline-block;
+    .save-button {
         background-color: #008b8b;
         color: #fff;
         border: none;
         border-radius: 5px;
         padding: 10px 20px;
         font-size: 1rem;
-        text-decoration: none;
-        text-align: center;
         cursor: pointer;
-        width: 120px;
-        /* توحيد العرض */
+        display: block;
+        margin-top: 20px;
     }
 
-    .yes-button:hover,
-    .no-button:hover {
+    .save-button:hover {
         background-color: #006f6f;
     }
     </style>
@@ -216,17 +197,26 @@
             </div>
         </aside>
         <main class="main-content">
-            <div class="message-container">
-                <img src="signout.png" alt="Logout Icon">
-                <h2>Are you sure you want to sign out?</h2>
+            <h2>Language & Region</h2>
+            <div class="settings-section">
+                <label for="language">Select Language:</label>
+                <select id="language" name="language">
+                    <option value="en">English</option>
+                    <option value="ar">Arabic</option>
+                    <option value="fr">French</option>
+                    <option value="es">Spanish</option>
+                </select>
             </div>
-            <div class="action-buttons">
-                <!-- زر Yes -->
-                <a href="index.php" class="yes-button">Yes</a>
-
-                <!-- زر No -->
-                <button class="no-button" onclick="window.history.back();">No</button>
+            <div class="settings-section">
+                <label for="region">Select Region:</label>
+                <select id="region" name="region">
+                    <option value="us">United States</option>
+                    <option value="sa">Saudi Arabia</option>
+                    <option value="fr">France</option>
+                    <option value="es">Spain</option>
+                </select>
             </div>
+            <button class="save-button">Save Changes</button>
         </main>
     </div>
 </body>
