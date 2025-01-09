@@ -1,0 +1,268 @@
+<!DOCTYPE html>  
+<html lang="en">  
+
+<head>  
+    <meta charset="UTF-8">  
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">  
+    <title>Camera Access</title>  
+    <link rel="stylesheet" href="styles.css"> 
+    <style>
+        body {  
+    font-family: Arial, sans-serif;  
+    margin: 0;  
+    background-color: #f3e4d1;   
+    justify-content: center;  
+    align-items: center;  
+    height: 100vh; 
+}  
+
+.container {  
+    margin-left: 300px;  
+    margin-right: 600px;
+}  
+body {
+        margin: 0;
+        font-family: 'Poppins', sans-serif;
+        background-color: #f5ecd8;
+    }
+    .header {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        padding: 15px 20px;
+        background-color: #f5ecd8;
+        box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+        position: relative;  /* إعطاء أولوية للصورة */
+        z-index: 10;   /* لجعل الصورة تعمل بشكل صحيح مع z-index */
+        
+    }
+
+    .sidebar {
+        z-index: 5;
+        /* مستوى أدنى من الهيدر */
+    }
+
+
+    .header img {
+        width: 100px;
+        /* تحديد عرض الصورة */
+        height: auto;
+        /* جعل الارتفاع يتناسب تلقائيًا */
+    }
+
+    .header .logo {
+        font-size: 1.5rem;
+        font-weight: bold;
+        color: #8b4513;
+        text-align: left;
+        cursor: pointer;
+    }
+
+    .header nav {
+        display: flex;
+        gap: 15px;
+    }
+
+    .header nav a {
+        text-decoration: none;
+        color: #333;
+        font-weight: bold;
+        cursor: pointer;
+    }
+
+    .header nav a:hover {
+        color: black;
+        cursor: pointer;
+        text-decoration: underline;
+    }
+
+.logo {  
+    margin: 20px ; /* Space below logo */
+    display:flex;  
+}  
+
+.camera-logo {  
+    width: 70px; /* Adjust width as needed */  
+    height: auto;  
+    text-align: center;
+    cursor: pointer;
+}  
+
+h1 {  
+    color: #212608; /* Dark teal color */  
+}  
+
+.access-section {  
+    margin: 25px 10;  
+}  
+
+.access-title {  
+    font-size: 24px;  
+    background-color: #ffccbc; /* Peach background color */  
+    padding: 10px;  
+    border-radius: 25px;  
+    margin: 25px 0px;  
+
+}  
+
+.access-option {  
+    background-color: #e0e0e0; /* Light grey for options */  
+    padding: 10px;  
+    border-radius: 25px;  
+    cursor: pointer;  
+    margin: 20px 0px;
+}  
+
+.access-option:hover {  
+    background-color: #d1d1d1; /* Slightly darker on hover */  
+}  
+
+.info-text {  
+    color: #7f5c5c; /* Darker brown text color */  
+    font-size: 14px;  
+    margin-top: 10px;  
+}
+
+    .sidebar {
+        z-index: 5;
+        /* مستوى أدنى من الهيدر */
+    }
+
+
+    .search-box {
+
+        text-align: right;
+        border: 1px solid #ccc;
+        border-radius: 20px;
+        padding: 5px 15px;
+        width: 200px;
+        outline: none;
+    }
+
+    /* الصفحة الرئيسية */
+    .container-side {
+        display: flex;
+    }
+
+    /* القائمة الجانبية */
+    .sidebar {
+        width: 200px;
+        background-color: #fff;
+        padding: 20px 10px;
+        height: 100vh;
+        box-shadow: 2px 0 5px rgba(0, 0, 0, 0.1);
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        /* توسيط المحتوى أفقيًا */
+        justify-content: space-between;
+       /* توزيع العناصر بالتساوي */
+        position: fixed;
+        left: 0;
+        top: 0;
+        text-align: center;
+        /* توسيط النصوص داخل العناصر */
+    }
+
+    .sidebar .top-menu {
+        margin-top: 70px;
+        /* هامش علوي لتحريك القائمة العلوية */
+    }
+
+    .sidebar .center-menu {
+        margin-top: -50px;
+               /* رفع القائمة الوسطى */
+    }
+
+    .sidebar .bottom-menu {
+        margin-bottom: -1px;       /* رفع القائمة السفلية */
+    }
+
+    .sidebar ul {
+        list-style: none;
+        padding: 0;
+        margin: 0;
+    }
+
+    .sidebar ul li {
+        margin-bottom: 20px;
+    }
+
+    .sidebar ul li a {
+        text-decoration: none;
+        color: #333;
+        font-weight: bold;
+        display: flex;
+        align-items: center;
+        justify-content: center;       /* توسيط العناصر داخل الروابط */
+        gap: 10px;
+    }
+    .search-box {
+
+text-align: right;
+border: 1px solid #ccc;
+border-radius: 20px;
+padding: 5px 15px;
+width: 200px;
+outline: none;
+}
+.search-profile{
+            margin-left: 20px;
+        }
+    </style> 
+</head>  
+
+<body>  
+    <div class="header">
+        <div class="menu-icon">☰</div>
+        <nav class="nav-links">
+            <a href="index.html">Home</a>
+            <a href="explore.html">Explorer</a>
+            <a href="page2.php">About</a>
+        </nav>
+        <div class="search-profile">
+            <span>🔍</span>
+            <input class="search-box" type="text" placeholder="بحث...">        </div>
+    </div>
+    
+   
+    <div class="container-side">
+        <aside class="sidebar">
+            <div class="top-menu">
+                <ul>
+                    <li><a href="#">📱 Device</a></li>
+                    <li><a href="camera.html">📷 Camera</a></li>
+                    <li><a href="#">🔖 Saved</a></li>
+                </ul>
+            </div>
+            <div class="center-menu">
+                <ul>
+                    <li><a href="#"> My Profile 👤</a></li>
+                    <li><a href="#"> Settings ⚙️</a></li>
+                    <li><a href="SignOut.html"> Sign Out 🚪</a></li>
+                </ul>
+            </div>
+            <div class="bottom-menu">
+                <ul>
+                    <li><a href="#"> Help ❓</a></li>
+                </ul>
+            </div>
+        </aside>
+    </div>
+    <div class="container">  
+        <div class="logo">  
+            <img src="photo-camera.jpg" alt="Camera Logo" class="camera-logo">
+            <h1>Camera</h1>    
+        </div>  
+       
+        <div class="access-section">  
+            <div class="access-title">Access*</div>  
+            <div class="access-option">None</div>  
+            <div class="access-option">Limited Access</div>  
+            <div class="access-option">Full Access</div>  
+        </div>  
+        <p class="info-text">Photo may contain data associated with location, depth information, caption, and audio.</p>  
+    </div>  
+</body>  
+
+</html>

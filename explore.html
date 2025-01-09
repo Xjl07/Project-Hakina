@@ -1,0 +1,300 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>حكينا</title>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600&display=swap" rel="stylesheet">
+    <style>
+    /* عام */
+    body {
+        margin: 0;
+        font-family: 'Poppins', sans-serif;
+        background-color: #f5ecd8;
+    }
+
+    header {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        padding: 15px 20px;
+        background-color: #fff8dc;
+        box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+    }
+
+    header {
+        position: relative;
+        /* لجعل الصورة تعمل بشكل صحيح مع z-index */
+        z-index: 10;
+        /* إعطاء أولوية للصورة */
+    }
+
+    .sidebar {
+        z-index: 5;
+        /* مستوى أدنى من الهيدر */
+    }
+
+
+    header img {
+        width: 100px;
+        /* تحديد عرض الصورة */
+        height: auto;
+        /* جعل الارتفاع يتناسب تلقائيًا */
+    }
+
+    header .logo {
+        font-size: 1.5rem;
+        font-weight: bold;
+        color: #8b4513;
+        text-align: left;
+    }
+
+    header nav {
+        display: flex;
+        gap: 15px;
+    }
+
+    header nav a {
+        text-decoration: none;
+        color: #333;
+        font-weight: bold;
+    }
+
+    header nav a:hover {
+        color: #007BFF;
+    }
+
+    .search-box {
+
+        text-align: right;
+        border: 1px solid #ccc;
+        border-radius: 20px;
+        padding: 5px 15px;
+        width: 200px;
+        outline: none;
+    }
+    .search-profile{
+            margin-left: 20px;
+        }
+    /* الصفحة الرئيسية */
+    .container {
+        display: flex;
+    }
+
+    /* القائمة الجانبية */
+    .sidebar {
+        width: 200px;
+        background-color: #fff;
+        padding: 20px 10px;
+        height: 100vh;
+        box-shadow: 2px 0 5px rgba(0, 0, 0, 0.1);
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        /* توسيط المحتوى أفقيًا */
+        justify-content: space-between;
+       /* توزيع العناصر بالتساوي */
+        position: fixed;
+        left: 0;
+        top: 0;
+        text-align: center;
+        /* توسيط النصوص داخل العناصر */
+    }
+
+    .sidebar .top-menu {
+        margin-top: 70px;
+        /* هامش علوي لتحريك القائمة العلوية */
+    }
+
+    .sidebar .center-menu {
+        margin-top: -50px;
+               /* رفع القائمة الوسطى */
+    }
+
+    .sidebar .bottom-menu {
+        margin-bottom: -1px;       /* رفع القائمة السفلية */
+    }
+
+    .sidebar ul {
+        list-style: none;
+        padding: 0;
+        margin: 0;
+    }
+
+    .sidebar ul li {
+        margin-bottom: 20px;
+    }
+
+    .sidebar ul li a {
+        text-decoration: none;
+        color: #333;
+        font-weight: bold;
+        display: flex;
+        align-items: center;
+        justify-content: center;       /* توسيط العناصر داخل الروابط */
+        gap: 10px;
+    }
+
+   /* المحتوى الرئيسي */
+    .main-content {
+        flex: 1;
+        padding: 20px;
+        margin-left: 220px;
+    }
+
+    .image-container img {
+        width: 110%;
+        display: block;
+        border-radius: 10px;
+        box-shadow: 0px 4px 15px rgba(169, 169, 169, 0.3);
+        /* Light gray shadow effect */
+    }
+
+    .story-section {
+        display: flex;
+        gap: 20px;
+        flex-wrap: wrap;
+        margin-bottom: 20px;
+    }
+
+    .story-card {
+        background-color: #fff;
+        padding: 15px;
+        border-radius: 1px;
+        box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+        width: calc(25% - 15px);
+    }
+
+    .story-card p {
+        font-size: 1rem;
+        margin-bottom: 15px;
+        color: #333;
+    }
+
+    .story-actions {
+        display: flex;
+        justify-content: space-between;
+    }
+
+    .story-actions button {
+        background: none;
+        border: none;
+        cursor: pointer;
+        font-size: 1.5rem;
+        color: #8b4513;
+    }
+    /* معرض الصور */
+    .gallery-card {
+        background-color: #fff;
+        padding: 20px;
+        border-radius: 10px;
+        box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+        width: 500px;
+        height: 500px;
+        margin-bottom: 50px;
+        margin-right: 20px;
+    }
+
+.gallery-card h3 {
+        margin-bottom: 15px;
+        font-size: 1.2rem;
+        color: #8b4513;
+    }
+
+    .gallery-grid {
+        display: grid;
+        grid-template-columns: repeat(2, 1fr);
+        gap: 10px;
+    }
+
+    .gallery-grid img {
+        width: 100%;
+        border-radius: 10px;
+    }
+   
+    </style>
+
+    </style>
+</head>
+
+<body>
+    <header>
+        <div class="search-profile">
+            
+          <input class="search-box" type="text" placeholder="بحث...">
+          <span>🔍</span>
+        </div>
+        <nav>
+            <a href="index.php">Home</a>
+            <a href="explore.html">Explorer</a>
+            <a href="#">About</a>
+        </nav>
+        <img src="icon.jpg" alt="Hakeena Image">
+    </header>
+    <div class="container">
+        <aside class="sidebar">
+            </u1>
+            <div class="top-menu">
+                <ul>
+                    <li><a href="#">📱 Device</a></li>
+                    <li><a href="camera.html">📷 Camera</a></li>
+                    <li><a href="#">🔖 Saved</a></li>
+                </ul>
+            </div>
+            <div class="center-menu">
+                <ul>
+                    <li><a href="#">👤 My Profile</a></li>
+                    <li><a href="#">⚙️ Settings</a></li>
+                    <li><a href="SignOut.html">🚪 Sign Out</a></li>
+                </ul>
+            </div>
+            <div class="bottom-menu">
+                <ul>
+                    <li><a href="#">❓ Help</a></li>
+                </ul>
+            </div>
+        </aside>
+        <main class="main-content">
+            <section class="story-section">
+                <div class="story-card">
+                    <p>دائمًا كنت أخاف أتكلم قدام الناس...</p>
+                    <div class="story-actions">
+                        <button>❤️</button>
+                        <button>🔁</button>
+                        <button>🔖</button>
+                    </div>
+                </div>
+                <div class="story-card">
+                    <p>قبل سنة، قررت أتعلم اللغة الإسبانية...</p>
+                    <div class="story-actions">
+                        <button>❤️</button>
+                        <button>🔁</button>
+                        <button>🔖</button>
+                    </div>
+                </div>
+                <div class="story-card">
+                    <p>لما فقدت وظيفتي الأولى...</p>
+                    <div class="story-actions">
+                        <button>❤️</button>
+                        <button>🔁</button>
+                        <button>🔖</button>
+                    </div>
+                </div>
+                </div>
+            </section>
+
+            <section class="gallery-card">
+                <h3>كيف غيرت زاوية صغيرة من بيتي بالكامل</h3>
+                <div class="gallery-grid">
+                    <img src="m1.jpg" alt="صورة 1" style="width: 200px; height: auto;">
+                    <img src="m2.jpg" alt="صورة 2" style="width: 200px; height: auto;">
+                    <img src="m3.jpg" alt="صورة 3" style="width: 200px; height: auto;">
+                    <img src="m4.jpg" alt="صورة 4" style="width: 200px; height: auto;">
+                </div>
+            </section>
+        </main>
+    </div>
+</body>
+
+</html>
