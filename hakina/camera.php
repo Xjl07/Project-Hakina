@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en" dir="ltr">
+<html lang="en">
 
 <head>
     <meta charset="UTF-8">
@@ -8,10 +8,12 @@
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600&display=swap" rel="stylesheet">
     <style>
     /* General */
+
     body {
         margin: 0;
         font-family: 'Poppins', sans-serif;
         background-color: #f3e4d1;
+        /* لون الخلفية البيج */
     }
 
     header {
@@ -26,26 +28,28 @@
         top: 0;
         left: 0;
         width: 100%;
+        /* ثبات الهيدر في أعلى الصفحة */
     }
 
     header img {
         width: 90px;
         height: auto;
-        margin-right: 15px;
         transform: translateX(50px);
-        /* دفع الصورة لليمين */
+        /* تحريك اللوغو */
     }
 
     header .logo {
         font-size: 1.5rem;
         font-weight: bold;
         color: #8b4513;
+        /* لون النص البني */
     }
 
     header nav {
         display: flex;
         gap: 60px;
     }
+
 
     header nav a {
         text-decoration: none;
@@ -55,6 +59,7 @@
 
     header nav a:hover {
         color: #007BFF;
+        /* لون الأزرق عند التمرير */
     }
 
     .search-box {
@@ -64,10 +69,9 @@
         width: 150px;
         outline: none;
         transform: translateX(-35px);
-        /* عدلي القيمة حسب الحاجة */
+        /* تعديل موضع الصندوق */
     }
 
-    /* Sidebar */
     .sidebar {
         width: 200px;
         background-color: #faf5ef;
@@ -82,6 +86,7 @@
         left: 0;
         top: 60px;
         text-align: center;
+        /* قائمة جانبية ثابتة */
     }
 
     .sidebar .top-menu {
@@ -117,66 +122,57 @@
         color: #007BFF;
     }
 
-    /* Main content */
+    .camera-logo {
+        width: 70px;
+        height: auto;
+        text-align: center;
+        cursor: pointer;
+    }
+
     .main-content {
         flex: 1;
         padding: 20px;
         margin-left: 220px;
-        text-align: center;
         margin-top: 70px;
-        display: flex;
-        flex-direction: column;
-        align-items: center;
-        justify-content: center;
-        height: calc(100vh - 70px);
     }
 
     .main-content h2 {
         font-size: 1.5rem;
         color: #8b4513;
         margin-bottom: 20px;
-        text-align: left;
     }
 
-    .main-content .message-container {
-        display: flex;
-        align-items: center;
-        justify-content: flex-start;
-        gap: 15px;
+    .settings-section {
         margin-bottom: 30px;
     }
 
-    .main-content .message-container img {
-        width: 50px;
-        height: 50px;
-        object-fit: cover;
+    .settings-section label {
+        font-size: 1rem;
+        color: #333;
+        display: block;
+        margin-bottom: 10px;
     }
 
-    .main-content .action-buttons {
-        display: flex;
-        flex-direction: row;
-        justify-content: center;
-        gap: 30px;
+    .settings-section select {
+        width: 100%;
+        padding: 10px;
+        border: 1px solid #ccc;
+        border-radius: 5px;
     }
 
-    .yes-button,
-    .no-button {
-        display: inline-block;
+    .save-button {
         background-color: #008b8b;
         color: #fff;
         border: none;
         border-radius: 5px;
         padding: 10px 20px;
         font-size: 1rem;
-        text-decoration: none;
-        text-align: center;
         cursor: pointer;
-        width: 120px;
-        /* توحيد العرض */
+        display: block;
+        margin-top: 20px;
     }
 
-    .yes-button:hover,
-    .no-button:hover {
+    .save-button:hover {
         background-color: #006f6f;
     }
     </style>
@@ -217,20 +213,29 @@
                 </ul>
             </div>
         </aside>
-        <main class="main-content">
-            <div class="message-container">
-                <img src="signout.png" alt="Logout Icon">
-                <h2>Are you sure you want to sign out?</h2>
-            </div>
-            <div class="action-buttons">
-                <!-- زر Yes -->
-                <a href="index.php" class="yes-button">Yes</a>
 
-                <!-- زر No -->
-                <button class="no-button" onclick="window.history.back();">No</button>
+
+        <main class="main-content">
+            <!-- المحتوى الأساسي -->
+            <div class="logo">
+                <img src="photo-camera.png" alt="Camera Logo" class="camera-logo">
+                <h2>Camera</h2>
             </div>
+            <!-- عنوان القسم -->
+            <div class="settings-section">
+                <label for="access-section">Select access:</label>
+                <!-- تحديد اللغة -->
+                <select id="access-section" name="access-section">
+                    <option value="en">Access</option>
+                    <option value="ar">None</option>
+                    <option value="fr">Limited Access</option>
+                    <option value="es">Full Access</option>
+                </select>
+            </div>
+            <button class="save-button">Save Changes</button>
+            <p class="info-text">Photo may contain data associated with location, depth information, caption, and audio.
+            </p>
         </main>
-    </div>
 </body>
 
 </html>

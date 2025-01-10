@@ -27,7 +27,7 @@
     header nav {
         display: flex;
         justify-content: center;
-        gap: 30px;
+        gap: 60px;
         /* إضافة المسافة بين العناصر */
         font-family: 'Poppins', sans-serif;
         /* تغيير الخط للقوائم */
@@ -144,11 +144,13 @@
     <header>
         <nav>
             <a href="index.php">Home</a>
-            <a href="Explorer.php">Explorer</a>
+            <a href="explore.php">Explorer</a>
             <a href="page2.php">About</a>
-
+            <a href="#">Bookmarks</a>
+            <a href="#">Your story</a>
+            <a href="rely.php">Reply & Likes</a>
         </nav>
-        <a href="#" class="signup">Sign Up</a>
+        <a href="sing.php" class="signup">Sign Up</a>
     </header>
     <main>
         <div class="image-container">

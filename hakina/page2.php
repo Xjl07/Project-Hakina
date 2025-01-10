@@ -4,7 +4,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Page 2</title>
+    <title>حكينا</title>
 
     <!-- إضافة خط Poppins من Google Fonts -->
     <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500;700&display=swap" rel="stylesheet">
@@ -135,7 +135,7 @@
             </div>
             <!-- زر Get Started -->
             <div class="button">
-                <a href="signup.html">Get Started</a>
+                <a href="sing.php">Get Started</a>
             </div>
         </div>
     </div>

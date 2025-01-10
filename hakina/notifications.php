@@ -23,7 +23,7 @@ $result = $conn->query($sql);
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Hakeena - Notifications</title>
+    <title>حكينا</title>
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600&display=swap" rel="stylesheet">
     <style>
     /* نسخ نفس التنسيقات الموجودة */
@@ -63,8 +63,9 @@ $result = $conn->query($sql);
 
     header nav {
         display: flex;
-        gap: 15px;
+        gap: 60px;
     }
+
 
     header nav a {
         text-decoration: none;
@@ -184,13 +185,15 @@ $result = $conn->query($sql);
 </head>
 
 <body>
-
     <header>
         <img src="logo.png" alt="Hakeena Image">
         <nav>
             <a href="index.php">Home</a>
-            <a href="Explorer.php">Explorer</a>
+            <a href="explore.php">Explorer</a>
             <a href="page2.php">About</a>
+            <a href="#">Bookmarks</a>
+            <a href="#">Your story</a>
+            <a href="rely.php">Reply & Likes</a>
         </nav>
         <input class="search-box" type="text" placeholder="Search...">
     </header>
@@ -200,7 +203,7 @@ $result = $conn->query($sql);
             <div class="top-menu">
                 <ul>
                     <li><a href="#">📱 Device</a></li>
-                    <li><a href="#">📷 Camera</a></li>
+                    <li><a href="camera.php">📷 Camera</a></li>
                     <li><a href="#">🔖 Saved</a></li>
                 </ul>
             </div>
