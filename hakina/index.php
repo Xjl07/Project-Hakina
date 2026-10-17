@@ -150,7 +150,7 @@
             <a href="#">Your story</a>
             <a href="rely.php">Reply & Likes</a>
         </nav>
-        <a href="sing.php" class="signup">Sign Up</a>
+        <a href="sing.php" class="signup">Demo Login</a>
     </header>
     <main>
         <div class="image-container">

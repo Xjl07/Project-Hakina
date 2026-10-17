@@ -1,3 +1,31 @@
+<?php
+declare(strict_types=1);
+
+session_start();
+require_once dirname(__DIR__) . '/includes/db.php';
+
+$error_message = '';
+
+if ($_SERVER['REQUEST_METHOD'] === 'POST') {
+    $email = trim((string) ($_POST['email'] ?? ''));
+    $password = (string) ($_POST['password'] ?? '');
+
+    $statement = hakina_db()->prepare('SELECT id, name, email, password_hash FROM user WHERE email = ? LIMIT 1');
+    $statement->bind_param('s', $email);
+    $statement->execute();
+    $user = $statement->get_result()->fetch_assoc();
+
+    if ($user && password_verify($password, $user['password_hash'])) {
+        session_regenerate_id(true);
+        $_SESSION['hakina_user_id'] = (int) $user['id'];
+        $_SESSION['hakina_user_name'] = $user['name'];
+        header('Location: explore.php');
+        exit;
+    }
+
+    $error_message = 'The email or password is incorrect.';
+}
+?>
 <!DOCTYPE html>
 <html lang="en">
 
@@ -174,47 +202,34 @@
         color: #155724;
         background-color: #d4edda;
     }
+
+    .demo-access {
+        margin: 0 0 18px;
+        padding: 14px;
+        border: 1px solid #008b8b55;
+        border-radius: 16px;
+        background: #e9f5f3;
+        color: #234;
+        font-size: 14px;
+    }
+
+    .demo-access strong { color: #006f6f; }
+
+    .demo-access button {
+        width: 100%;
+        margin-top: 10px;
+        padding: 9px 12px;
+        border: 0;
+        border-radius: 12px;
+        background: #008b8b;
+        color: #fff;
+        font-weight: 600;
+        cursor: pointer;
+    }
     </style>
 </head>
 
 <body>
-    <?php
-$error_message = $success_message = "";
-
-if ($_SERVER["REQUEST_METHOD"] === "POST") {
-    $servername = "127.0.0.1";
-    $username = "root";
-    $password = "";
-    $dbname = "hakinadb";
-
-    $conn = new mysqli($servername, $username, $password, $dbname);
-
-    if ($conn->connect_error) {
-        die("فشل الاتصال بقاعدة البيانات: " . $conn->connect_error);
-    }
-
-    $email = $_POST['email'];
-    $password = $_POST['password'];
-
-    $sql = "SELECT * FROM user WHERE email = ? AND password = ?";
-    $stmt = $conn->prepare($sql);
-    $stmt->bind_param("ss", $email, $password);
-    $stmt->execute();
-    $result = $stmt->get_result();
-
-    if ($result->num_rows > 0) {
-        $user = $result->fetch_assoc();
-        header("Location: yourstory.php"); // إعادة التوجيه إلى صفحة "Your Story"
-        exit(); // إنهاء التنفيذ بعد إعادة التوجيه
-    } else {
-        $error_message = "خطأ: البريد الإلكتروني أو كلمة المرور غير صحيحة.";
-    }
-
-    $stmt->close();
-    $conn->close();
-}
-?>
-
     <header>
         <img src="logo.png" alt="Hakeena Image">
         <nav>
@@ -233,6 +248,12 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
             <img src="photo2.jpg" alt="Group Image">
         </div>
         <div class="right">
+            <div class="demo-access">
+                <strong>Portfolio Demo Access</strong><br>
+                Email: demo@hakina.app<br>
+                Password: Demo@12345
+                <button type="button" id="fill-demo">Use demo account</button>
+            </div>
             <form method="POST">
                 <div class="form-group">
                     <label for="email">Email</label>
@@ -249,10 +270,6 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
             <div class="error-message"><?php echo $error_message; ?></div>
             <?php endif; ?>
 
-            <?php if (!empty($success_message)) : ?>
-            <div class="success-message"><?php echo $success_message; ?></div>
-            <?php endif; ?>
-
             <div class="or-sign-in">Or sign in</div>
             <div class="icons">
                 <a href="https://www.instagram.com" target="_blank" title="Instagram">
@@ -264,6 +281,13 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
             </div>
         </div>
     </div>
+    <script>
+    document.getElementById('fill-demo').addEventListener('click', function () {
+        document.getElementById('email').value = 'demo@hakina.app';
+        document.getElementById('password').value = 'Demo@12345';
+        document.getElementById('email').focus();
+    });
+    </script>
 </body>
 
 </html>

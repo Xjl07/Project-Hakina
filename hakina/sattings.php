@@ -235,13 +235,13 @@
                 </div>
                 <div class="settings-grid">
                     <!-- Account & Privacy -->
-                    <a href="language_region.php" class="settings-item">
+                    <a href="language&amp;region.php" class="settings-item">
                         <img src="prv.png" alt="Account Icon">
                         <span>Account & Privacy</span>
                     </a>
 
                     <!-- Comment -->
-                    <a href="comments.php" class="settings-item">
+                    <a href="rely.php" class="settings-item">
                         <img src="comment.png" alt="Comment Icon">
                         <span>Comment</span>
                     </a>

@@ -1,16 +1,8 @@
 <?php
-// الاتصال بقاعدة البيانات
-$servername = "localhost";
-$username = "root";
-$password = "";
-$dbname = "hakinadb";
+declare(strict_types=1);
 
-$conn = new mysqli($servername, $username, $password, $dbname);
-
-// التحقق من الاتصال
-if ($conn->connect_error) {
-    die("Connection failed: " . $conn->connect_error);
-}
+require_once dirname(__DIR__) . '/includes/db.php';
+$conn = hakina_db();
 
 // استعلام لجلب الإشعارات
 $sql = "SELECT * FROM notifications";
@@ -247,7 +239,7 @@ $result = $conn->query($sql);
                 ?>
                 <img src="avatar3.jpg" alt="User Icon">
                 <div class="notification-content">
-                    <p><strong>User <?php echo $row['userID']; ?></strong> <?php echo $row['massage']; ?></p>
+                    <p><strong>User <?php echo (int) $row['userID']; ?></strong> <?php echo e($row['massage']); ?></p>
                     <span><?php echo ($row['isRead'] ? 'Read' : 'Unread'); ?></span>
                 </div>
             </div>
@@ -261,7 +253,3 @@ $result = $conn->query($sql);
 </body>
 
 </html>
-
-<?php
-$conn->close();
-?>
