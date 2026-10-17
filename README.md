@@ -2,6 +2,10 @@
 
 Hakina is a collaborative university storytelling project created by a student team. The experience includes story discovery, social interactions, bookmarks, profile settings, and media-oriented pages.
 
+## Live demo
+
+[Open Hakina](https://project-hakina-production.up.railway.app/)
+
 ## Demo access
 
 - Email: `demo@hakina.app`
